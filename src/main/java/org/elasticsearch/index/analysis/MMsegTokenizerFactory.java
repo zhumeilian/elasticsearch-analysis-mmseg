@@ -13,6 +13,8 @@ import org.elasticsearch.index.settings.IndexSettings;
 import java.io.File;
 import java.io.Reader;
 
+import static org.elasticsearch.index.config.MMsegElasticConfigurator.init;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Medcl'
@@ -30,6 +32,7 @@ public class MMsegTokenizerFactory extends AbstractTokenizerFactory {
         String path=new File(env.configFile(),"mmseg").getPath();
         dic = Dictionary.getInstance(path);
         seg_type = settings.get("seg_type", "max_word");
+        init(indexSettings, settings);
     }
 
     @Override
